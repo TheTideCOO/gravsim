@@ -3,9 +3,9 @@ import math
 import random
 
 # Constants
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1500, 1100
 G = 0.4  # gravitational constant
-PARTICLE_COUNT = 20
+PARTICLE_COUNT = 2000
 PARTICLE_RADIUS = 5
 PARTICLE_SPEED = 5
 SPLIT_THRESHOLD = 10  # Threshold size for splitting particles upon collision
@@ -75,8 +75,8 @@ def main():
 
     particles = []
     for _ in range(PARTICLE_COUNT):
-        x = random.randint(0, WIDTH)
-        y = random.randint(0, HEIGHT)
+        x = random.randint(PARTICLE_RADIUS, WIDTH - PARTICLE_RADIUS)
+        y = random.randint(PARTICLE_RADIUS, HEIGHT - PARTICLE_RADIUS)
         vx = random.uniform(-PARTICLE_SPEED, PARTICLE_SPEED)
         vy = random.uniform(-PARTICLE_SPEED, PARTICLE_SPEED)
         mass = random.uniform(1, 5)  # Random mass for each particle
@@ -101,11 +101,12 @@ def main():
             p.draw(screen)
 
             # Check for collisions and split particles if necessary
-            for other in particles:
-                if p != other and check_collision(p, other):
-                    if p.mass >= SPLIT_THRESHOLD and other.mass >= SPLIT_THRESHOLD:
-                        split_particle(p)
-                        split_particle(other)
+        for p1 in particles:
+            for p2 in particles:
+                if p1 != p2 and check_collision(p1, p2):
+                    if p1.mass >= SPLIT_THRESHOLD and p2.mass >= SPLIT_THRESHOLD:
+                        split_particle(p1)
+                        split_particle(p2)
 
         pygame.display.flip()
         clock.tick(60)  # Cap the frame rate at 60 FPS
