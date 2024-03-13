@@ -70,7 +70,7 @@ def split_particle(p):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Particle Simulation")
+    pygame.display.set_caption("GravSim v0.15")
     clock = pygame.time.Clock()
 
     particles = []
