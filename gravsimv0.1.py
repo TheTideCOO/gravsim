@@ -5,7 +5,7 @@ import random
 # Constants
 WIDTH, HEIGHT = 1500, 1100
 G = 0.4  # gravitational constant
-PARTICLE_COUNT = 2000
+PARTICLE_COUNT = 250
 PARTICLE_RADIUS = 5
 PARTICLE_SPEED = 5
 SPLIT_THRESHOLD = 10  # Threshold size for splitting particles upon collision
